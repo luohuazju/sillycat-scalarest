@@ -1,0 +1,6 @@
+target/streams
+target
+project/target
+project/project
+.sbtserver
+
