@@ -4,7 +4,7 @@ import play.api.libs.json._
 import play.api.mvc._
 import models.Book._
 
-object Application extends Controller {
+object BookController extends Controller {
 
   def listBooks = Action {
     Ok(Json.toJson(books))
