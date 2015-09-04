@@ -1,5 +1,9 @@
-name := """simple-rest-scala"""
+import play.PlayScala
 
-version := "1.0-SNAPSHOT"
+name := """sillycat-scalarest"""
+
+version := "1.0"
 
 lazy val root = project.in(file(".")).enablePlugins(PlayScala)
+
+
