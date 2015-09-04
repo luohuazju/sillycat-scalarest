@@ -3,4 +3,8 @@ target
 project/target
 project/project
 .sbtserver
+.idea
+.idea_modules
+logs
+
 
