@@ -5,4 +5,6 @@
 # Home page
 GET      /api/v1/book                     controllers.BookController.listBooks
 POST     /api/v1/book                     controllers.BookController.saveBook
-
+GET      /api/v1/book/:id                 controllers.BookController.getBook(id:String)
+PUT      /api/v1/book/:id                 controllers.BookController.updateBook(id:String)
+DELETE   /api/v1/book/:id                 controllers.BookController.deleteBook(id:String)
