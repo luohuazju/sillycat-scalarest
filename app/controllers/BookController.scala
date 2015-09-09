@@ -4,7 +4,9 @@ import play.api.libs.json._
 import play.api.mvc._
 import models.Book
 
-object BookController extends Controller {
+trait BookController {
+
+  this: Controller =>
 
   def listBooks = Action {
     Ok(Json.toJson(Book.books))
@@ -50,3 +52,5 @@ object BookController extends Controller {
   }
 
 }
+
+object BookController extends Controller with BookController
