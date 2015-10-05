@@ -1,14 +1,19 @@
 package controllers
 
 import play.api.libs.json.JsValue
+
+import scala.concurrent.Future
+
+import org.scalatestplus.play._
+
 import play.api.mvc._
 import play.api.test._
-import scala.concurrent.Future
+import play.api.test.Helpers._
 
 /**
  * Created by carl on 9/9/15.
  */
-class BookControllerSpec extends PlaySpecification with Results{
+class BookControllerSpec extends PlaySpec with Results{
 
   class TestController() extends Controller with BookController
 
