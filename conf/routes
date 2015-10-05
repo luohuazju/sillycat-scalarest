@@ -2,9 +2,13 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET      /books                           controllers.Application.listBooks
-POST     /books                           controllers.Application.saveBook
+# API Routes
+GET     /api/v1/book        controllers.BookController.listBooks
+POST    /api/v1/book        controllers.BookController.saveBook
+GET     /api/v1/book/:id    controllers.BookController.getBook(id:String)
+PUT     /api/v1/book/:id    controllers.BookController.updateBook(id:String)
+DELETE  /api/v1/book/:id    controllers.BookController.deleteBook(id:String)
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file)
+#GET     /assets/*file               controllers.Assets.versioned(path="/public", file)
