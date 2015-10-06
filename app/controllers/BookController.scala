@@ -7,18 +7,16 @@ import models.Book
 import com.wordnik.swagger.annotations.{Api,ApiModel,ApiModelProperty,ApiOperation,ApiParam,ApiResponse,ApiResponses}
 
 
-trait BookController {
-
-  this: Controller =>
-
+@Api(value = "/api/v1/book", description = "Operations with Book")
+object BookController extends Controller {
   @ApiOperation(value = "Fetch All the Books",
     notes = "Returns all the books",
-    response = classOf[String],
+    response = classOf[models.Book],
     httpMethod = "GET",
-    produces = "text/csv,text/html,application/json,application/x-php,application/x-python,application/x-ruby,text,application/xml",
+    produces = "application/json",
     position = 1)
   @ApiResponses(Array(
-    new ApiResponse(code = 200, message = "Successful load all books", response = classOf[String]),
+    new ApiResponse(code = 200, message = "Successful load all books"),
     new ApiResponse(code = 500, message = "System Error.")
   )
   )
@@ -64,8 +62,4 @@ trait BookController {
       }
     )
   }
-
 }
-
-@Api(value = "/api/v1/book", description = "Operations with Book")
-object BookController extends Controller with BookController

@@ -15,12 +15,10 @@ import play.api.test.Helpers._
  */
 class BookControllerSpec extends PlaySpec with Results{
 
-  class TestController() extends Controller with BookController
 
   "Book API#listBooks" should {
     "size should be 2" in {
-      val controller = new TestController
-      val result: Future[Result] = controller.listBooks.apply(FakeRequest())
+      val result: Future[Result] = BookController.listBooks.apply(FakeRequest())
       val bodyText: JsValue = contentAsJson(result)
       bodyText must not be null
     }

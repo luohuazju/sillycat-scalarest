@@ -15,4 +15,5 @@ DELETE  /api/v1/book/:id        controllers.BookController.deleteBook(id:String)
 
 # Swagger API
 GET     /api-docs               @pl.matisoft.swagger.ApiHelpController.getResources
-GET     /api-docs/api/v1   @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/v1")
+GET     /api-docs/api/v1/ping   @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/v1/ping")
+GET     /api-docs/api/v1/book   @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/v1/book")
