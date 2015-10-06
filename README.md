@@ -5,3 +5,7 @@
 -###Command to Start
 -
 -sbt run -Dhttp.port=8000
+
+-###Command to deploy
+-sbt dist
+-bin/sillycat-scalarest -Dconfig.file=conf/application.conf -Dhttp.port=8000 -Dhttp.address=0.0.0.0
