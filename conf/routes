@@ -2,9 +2,18 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
-GET      /api/v1/book                     controllers.BookController.listBooks
-POST     /api/v1/book                     controllers.BookController.saveBook
-GET      /api/v1/book/:id                 controllers.BookController.getBook(id:String)
-PUT      /api/v1/book/:id                 controllers.BookController.updateBook(id:String)
-DELETE   /api/v1/book/:id                 controllers.BookController.deleteBook(id:String)
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file           controllers.Assets.versioned(path="/public", file)
+
+# API Routes
+GET     /ping                   controllers.PingPongController.ping()
+GET     /api/v1/book            controllers.BookController.listBooks
+POST    /api/v1/book            controllers.BookController.saveBook
+GET     /api/v1/book/:id        controllers.BookController.getBook(id:String)
+PUT     /api/v1/book/:id        controllers.BookController.updateBook(id:String)
+DELETE  /api/v1/book/:id        controllers.BookController.deleteBook(id:String)
+
+# Swagger API
+GET     /api-docs               @pl.matisoft.swagger.ApiHelpController.getResources
+GET     /api-docs/api/v1/ping   @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/v1/ping")
+GET     /api-docs/api/v1/book   @pl.matisoft.swagger.ApiHelpController.getResource(path = "/api/v1/book")

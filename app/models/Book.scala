@@ -14,11 +14,11 @@ object Book {
     Book(Some("2"), "R in Action", "Hero", "isbn-002")
   )
 
-  def addBook(b: Book) : String = {
+  def addBook(b: Book):Option[String] = {
     val r = scala.util.Random
     b.id = Some(r.nextInt(10000000).toString)
     books = books ::: List(b)
-    b.id.get
+    b.id
   }
 
   def getBook(id:String):Option[Book] = {

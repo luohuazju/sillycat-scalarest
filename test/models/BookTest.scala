@@ -34,9 +34,9 @@ class BookTest {
     val b1 = Book(None, "titleb1", "sillycat", "ISBN-1")
     val id = Book.addBook(b1)
 
-    val b2 = Book(Some(id), "titleb2", "kiko", "ISBN-2")
+    val b2 = Book(id, "titleb2", "kiko", "ISBN-2")
     Book.updateBook(b2)
-    val b3 = Book.getBook(id)
+    val b3 = Book.getBook(id.get)
     Assert.assertNotNull(b3)
     Assert.assertNotNull(b3.get)
     Assert.assertEquals(b3.get.id,b2.id)
@@ -49,12 +49,12 @@ class BookTest {
     val b1 = Book(None,"tttt", "carl", "isbn-1")
     val id = Book.addBook(b1)
 
-    Assert.assertNotNull(Book.getBook(id))
-    Assert.assertNotNull(Book.getBook(id).get)
+    Assert.assertNotNull(Book.getBook(id.get))
+    Assert.assertNotNull(Book.getBook(id.get).get)
 
-    Book.deleteBook(id)
+    Book.deleteBook(id.get)
 
-    val b2 = Book.getBook(id)
+    val b2 = Book.getBook(id.get)
     Assert.assertEquals(b2,None)
   }
 

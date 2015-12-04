@@ -4,10 +4,22 @@ import play.api.libs.json._
 import play.api.mvc._
 import models.Book
 
-trait BookController {
+import com.wordnik.swagger.annotations.{Api,ApiModel,ApiModelProperty,ApiOperation,ApiParam,ApiResponse,ApiResponses}
 
-  this: Controller =>
 
+@Api(value = "/api/v1/book", description = "Operations with Book")
+object BookController extends Controller {
+  @ApiOperation(value = "Fetch All the Books",
+    notes = "Returns all the books",
+    response = classOf[models.Book],
+    httpMethod = "GET",
+    produces = "application/json",
+    position = 1)
+  @ApiResponses(Array(
+    new ApiResponse(code = 200, message = "Successful load all books", response = classOf[models.Book]),
+    new ApiResponse(code = 500, message = "System Error.")
+  )
+  )
   def listBooks = Action {
     Ok(Json.toJson(Book.books))
   }
@@ -16,7 +28,7 @@ trait BookController {
     val b = request.body.validate[Book]
     b.fold(
       errors => {
-        BadRequest(Json.obj("status" -> "OK", "message" -> JsError.toFlatJson(errors)))
+        BadRequest(Json.obj("status" -> "OK", "message" -> JsError.toJson(errors)))
       },
       book => {
         Book.addBook(book)
@@ -41,7 +53,7 @@ trait BookController {
     val b = request.body.validate[Book]
     b.fold(
       errors => {
-        BadRequest(Json.obj("status" -> "OK", "message" -> JsError.toFlatJson(errors)))
+        BadRequest(Json.obj("status" -> "OK", "message" -> JsError.toJson(errors)))
       },
       book => {
         book.id = Some(id)
@@ -50,7 +62,4 @@ trait BookController {
       }
     )
   }
-
 }
-
-object BookController extends Controller with BookController
