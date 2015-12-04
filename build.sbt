@@ -14,6 +14,7 @@ ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
 libraryDependencies ++= Seq(
   filters,
   "pl.matisoft" %% "swagger-play24" % "1.4",
+  "xalan" % "serializer" % "2.7.2",
   //for internal swagger-ui
   //"org.reflections" % "reflections" % "0.9.9" notTransitive(),
   //"org.webjars" % "swagger-ui" % "2.1.8-M1",
