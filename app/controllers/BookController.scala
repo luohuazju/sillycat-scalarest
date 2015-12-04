@@ -16,7 +16,7 @@ object BookController extends Controller {
     produces = "application/json",
     position = 1)
   @ApiResponses(Array(
-    new ApiResponse(code = 200, message = "Successful load all books"),
+    new ApiResponse(code = 200, message = "Successful load all books", response = classOf[models.Book]),
     new ApiResponse(code = 500, message = "System Error.")
   )
   )
